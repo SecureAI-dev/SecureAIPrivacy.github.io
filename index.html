@@ -3,60 +3,135 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SecureAI – Privacy Policy</title>
+  <title>SecureAI · Privacy Policy</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --primary: #0d6efd;
-      --text: #212529;
-      --bg: #ffffff;
-      --accent: #f8f9fa;
+      --bg: #0c0c0c;
+      --text-primary: #f0f0f0;
+      --text-secondary: #b3b3b3;
+      --accent: #00d1ff;
+      --accent-soft: rgba(0, 209, 255, 0.2);
+      --radius: 12px;
+      --max-width: 900px;
     }
 
     * {
       box-sizing: border-box;
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
-      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
-      line-height: 1.6;
-      color: var(--text);
+      font-family: 'Work Sans', sans-serif;
       background-color: var(--bg);
+      color: var(--text-primary);
     }
 
     header {
-      background: var(--primary);
-      color: #fff;
-      padding: 2rem 1rem;
+      padding: 4rem 1rem 3rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      margin: 0 0 0.25rem 0;
-      font-size: 2rem;
+    header::before,
+    header::after {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
     }
 
-    header p {
+    header::after {
+      top: auto;
+      bottom: -100px;
+      left: auto;
+      right: -100px;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(10deg); }
+    }
+
+    h1 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      letter-spacing: 2px;
       margin: 0;
-      font-size: 0.95rem;
-      opacity: 0.9;
+    }
+
+    p.lead {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(12,12,12,0.7);
+      z-index: 10;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a:focus,
+    nav a.active {
+      color: var(--accent);
     }
 
     main {
-      max-width: 860px;
-      margin: 2rem auto;
-      padding: 0 1rem 4rem 1rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
     }
 
-    h2 {
-      color: var(--primary);
-      margin-top: 2.25rem;
-      font-size: 1.5rem;
+    section {
+      margin-top: 3rem;
     }
 
-    h3 {
-      margin-top: 1.25rem;
-      font-size: 1.15rem;
+    section h2 {
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--accent);
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+    }
+
+    section h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.25rem;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--accent);
     }
 
     ul {
@@ -67,149 +142,135 @@
       margin-bottom: 0.5rem;
     }
 
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #6c757d;
-      padding: 1.5rem 0 2rem;
-      background: var(--accent);
+    a {
+      color: var(--accent);
     }
 
-    a {
-      color: var(--primary);
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      background: #111;
+    }
+
+    /* Fancy underline for headings */
+    section h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 2px;
+      background: var(--accent);
+      margin-top: 6px;
+    }
+
+    code {
+      font-family: 'Source Code Pro', monospace;
+      background: #181818;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: var(--accent);
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Privacy Policy for SecureAI</h1>
-    <p>Effective Date: March&nbsp;26,&nbsp;2025</p>
+
+  <nav>
+    <ul>
+      <li><a href="#intro" class="active">Intro</a></li>
+      <li><a href="#info">Information</a></li>
+      <li><a href="#use">Use</a></li>
+      <li><a href="#disclosure">Disclosure</a></li>
+      <li><a href="#rights">Your Rights</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="intro">
+    <h1>SecureAI Privacy Policy</h1>
+    <p class="lead">Effective&nbsp;Date:&nbsp;March&nbsp;26,&nbsp;2025</p>
   </header>
 
   <main>
-    <h2>Introduction</h2>
-    <p>
-      SecureAI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy describes how we
-      collect, use, disclose, and safeguard your personal information when you use the SecureAI mobile application
-      ("the App"). By accessing or using the App, you agree to the collection and use of information as outlined in this
-      Privacy Policy. If you do not agree with this Privacy Policy, please refrain from using the App.
-    </p>
 
-    <h2>Information We Collect</h2>
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        SecureAI ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you use the SecureAI mobile application ("the App"). By accessing or using the App, you agree to the collection and use of information as outlined in this Privacy Policy. If you do not agree with this Privacy Policy, please refrain from using the App.
+      </p>
+    </section>
 
-    <h3>1. Personal Information</h3>
-    <p>
-      We may collect personal information that you voluntarily provide to us, such as your email address, contact
-      information, registration details, and any information you provide while using the App. This includes data entered
-      into forms, user preferences, and communications with us.
-    </p>
+    <section id="info">
+      <h2>Information We Collect</h2>
 
-    <h3>2. Usage Data</h3>
-    <p>
-      We collect anonymous and aggregate data regarding your interactions with the App, including usage patterns,
-      preferences, device interactions, and feature usage. This data helps us improve the functionality, performance,
-      and user experience of the App. This data is not linked to your personal information unless you have provided us
-      with identifiable data.
-    </p>
+      <h3>1. Personal Information</h3>
+      <p>We may collect personal information that you voluntarily provide to us, such as your email address, contact information, registration details, and any information you provide while using the App. This includes data entered into forms, user preferences, and communications with us.</p>
 
-    <h3>3. Device Information</h3>
-    <p>
-      We may collect information about the device you use to access the App, including its model, operating system
-      version, device identifiers (such as IP address or device ID), crash logs, and other diagnostic data to help us
-      troubleshoot and improve our services.
-    </p>
+      <h3>2. Usage Data</h3>
+      <p>We collect anonymous and aggregate data regarding your interactions with the App, including usage patterns, preferences, device interactions, and feature usage. This data helps us improve the functionality, performance, and user experience of the App. This data is not linked to your personal information unless you have provided us with identifiable data.</p>
 
-    <h2>How We Use Your Information</h2>
-    <p>We use the information we collect for the following purposes:</p>
-    <ul>
-      <li>To provide, personalize, and improve the functionality of the App</li>
-      <li>To offer personalized content and recommendations based on your usage and preferences</li>
-      <li>To communicate with you regarding updates, support, and relevant service information</li>
-      <li>To monitor and analyze app performance, user interactions, and usage trends</li>
-      <li>To ensure the security, integrity, and availability of our services</li>
-      <li>To comply with legal obligations and enforce our terms and policies</li>
-    </ul>
+      <h3>3. Device Information</h3>
+      <p>We may collect information about the device you use to access the App, including its model, operating system version, device identifiers (such as IP address or device ID), crash logs, and other diagnostic data to help us troubleshoot and improve our services.</p>
+    </section>
 
-    <h2>Disclosure of Information</h2>
-    <p>We do not sell, rent, or trade your personal data. We may share your information in the following circumstances:</p>
-    <ul>
-      <li>With your explicit consent</li>
-      <li>
-        With trusted service providers, vendors, or contractors who perform services on our behalf, including those
-        related to app functionality, analytics, user support, and maintenance
-      </li>
-      <li>When required by law, regulation, or legal process, including compliance with subpoenas or court orders</li>
-      <li>
-        To protect the rights, property, or safety of SecureAI, our users, or others, including preventing fraudulent or
-        harmful activities
-      </li>
-      <li>
-        In connection with a business transaction, such as a merger, acquisition, or sale of assets, where your
-        information may be transferred as part of the transaction
-      </li>
-    </ul>
+    <section id="use">
+      <h2>How We Use Your Information</h2>
+      <p>We use the information we collect for the following purposes:</p>
+      <ul>
+        <li>To provide, personalize, and improve the functionality of the App</li>
+        <li>To offer personalized content and recommendations based on your usage and preferences</li>
+        <li>To communicate with you regarding updates, support, and relevant service information</li>
+        <li>To monitor and analyze app performance, user interactions, and usage trends</li>
+        <li>To ensure the security, integrity, and availability of our services</li>
+        <li>To comply with legal obligations and enforce our terms and policies</li>
+      </ul>
+    </section>
 
-    <h2>Use of External Data</h2>
-    <p>
-      The App utilizes data provided by the <em>Have I Been Pwned</em> service, which is licensed under the Creative Commons
-      Attribution&nbsp;4.0 International License. Please note that we have made modifications to this data for use within
-      the App. For more information about Have I Been Pwned, please visit their website.
-    </p>
+    <section id="disclosure">
+      <h2>Disclosure of Information</h2>
+      <p>We do not sell, rent, or trade your personal data. We may share your information in the following circumstances:</p>
+      <ul>
+        <li>With your explicit consent</li>
+        <li>With trusted service providers, vendors, or contractors who perform services on our behalf, including those related to app functionality, analytics, user support, and maintenance</li>
+        <li>When required by law, regulation, or legal process, including compliance with subpoenas or court orders</li>
+        <li>To protect the rights, property, or safety of SecureAI, our users, or others, including preventing fraudulent or harmful activities</li>
+        <li>In connection with a business transaction, such as a merger, acquisition, or sale of assets, where your information may be transferred as part of the transaction</li>
+      </ul>
+    </section>
 
-    <h2>Data Security</h2>
-    <p>
-      We implement reasonable administrative, technical, and physical safeguards to protect your personal information
-      from unauthorized access, alteration, disclosure, or destruction. While we strive to protect your information,
-      please note that no data transmission or storage system is 100% secure. Therefore, you acknowledge that the
-      transmission of personal information via the App is at your own risk.
-    </p>
+    <section>
+      <h2>Use of External Data</h2>
+      <p>The App utilizes data provided by the <em>Have I Been Pwned</em> service, which is licensed under the Creative Commons Attribution 4.0 International License. Please note that we have made modifications to this data for use within the App. For more information about Have I Been Pwned, please visit their website.</p>
+    </section>
 
-    <h2>Your Rights and Choices</h2>
-    <p>Subject to applicable law, you have the following rights regarding your personal data:</p>
-    <ul>
-      <li>The right to access the personal information we hold about you</li>
-      <li>The right to request corrections, updates, or deletions of your personal data</li>
-      <li>The right to withdraw your consent to processing (where processing is based on consent)</li>
-      <li>The right to request a copy of your personal data in a commonly used electronic format</li>
-      <li>The right to object to or restrict processing of your personal data in certain circumstances</li>
-      <li>
-        The right to lodge a complaint with a supervisory authority if you believe your rights have been violated
-      </li>
-    </ul>
-    <p>To exercise any of these rights, please contact us using the contact information provided below.</p>
+    <section>
+      <h2>Data Security</h2>
+      <p>We implement reasonable administrative, technical, and physical safeguards to protect your personal information from unauthorized access, alteration, disclosure, or destruction. While we strive to protect your information, please note that no data transmission or storage system is 100% secure. Therefore, you acknowledge that the transmission of personal information via the App is at your own risk.</p>
+    </section>
 
-    <h2>Children’s Privacy</h2>
-    <p>
-      The App is not intended for children under the age of 13, and we do not knowingly collect personal information
-      from children. If you believe we may have inadvertently collected information from a child under the age of 13,
-      please contact us immediately, and we will take steps to delete such information.
-    </p>
+    <section id="rights">
+      <h2>Your Rights and Choices</h2>
+      <p>Subject to applicable law, you have the following rights regarding your personal data:</p>
+      <ul>
+        <li>The right to access the personal information we hold about you</li>
+        <li>The right to request corrections, updates, or deletions of your personal data</li>
+        <li>The right to withdraw your consent to processing (where processing is based on consent)</li>
+        <li>The right to request a copy of your personal data in a commonly used electronic format</li>
+        <li>The right to object to or restrict processing of your personal data in certain circumstances</li>
+        <li>The right to lodge a complaint with a supervisory authority if you believe your rights have been violated</li>
+      </ul>
+      <p>To exercise any of these rights, please contact us using the contact information provided below.</p>
+    </section>
 
-    <h2>Changes to This Privacy Policy</h2>
-    <p>
-      We may update this Privacy Policy periodically to reflect changes in our practices, services, or legal
-      requirements. If we make material changes, we will notify you through the App or by other appropriate means. The
-      updated Privacy Policy will be posted on this page, with the new effective date noted at the top of the policy.
-    </p>
+    <section>
+      <h2>Children’s Privacy</h2>
+      <p>The App is not intended for children under the age of 13, and we do not knowingly collect personal information from children. If you believe we may have inadvertently collected information from a child under the age of 13, please contact us immediately, and we will take steps to delete such information.</p>
+    </section>
 
-    <h2>Contact Us</h2>
-    <p>
-      If you have any questions or concerns about this Privacy Policy or the processing of your personal data, please
-      contact us at:
-    </p>
-    <p>
-      <strong>Email:</strong> <a href="mailto:youremail@example.com">youremail@example.com</a><br />
-      <strong>Mailing Address (optional):</strong> <em>Insert Address if applicable</em>
-    </p>
-  </main>
+    <section>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy periodically to reflect changes in our practices, services, or legal requirements. If we make material changes, we will notify you through the App or by other appropriate means. The updated Privacy Policy will be posted on this page, with the new effective date noted at the top of the policy.</p>
+    </section>
 
-  <footer>
-    &copy; <span id="year"></span> SecureAI. All rights reserved.
-  </footer>
-
-  <script>
-    // Update year automatically
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+    <section id="contact">
+      <h2>Contact Us</h
