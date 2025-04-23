@@ -12,7 +12,6 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-  <!-- Fallback if JS is blocked -->
   <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
 
   <!-- Fade-in script -->
@@ -31,58 +30,66 @@
   </script>
 </head>
 <body>
-  <!-- Hero -->
-  <header class="hero" id="top">
+  <!-- Hero (purple gradient to match screenshots) -->
+  <header class="hero" id="top" style="background:linear-gradient(180deg,#5866ff 0%,#4f56ff 100%);">
     <img src="Assets/secureai-logo.png" alt="SecureAI Logo" class="logo">
     <h1><span class="glow">SecureAI</span> protects your digital life</h1>
-    <p class="tagline">Get instant alerts when your email appears in a data breach. Powered by AI. Privacy-first.</p>
+    <p class="tagline">Get instant alerts when your email appears in a data breach. Privacy-first. Powered by AI.</p>
     <a href="#download" class="cta-button">Download the App</a>
   </header>
 
-  <!-- Main content -->
   <main class="container">
 
-    <!-- FIRST CARD VISIBLE BY DEFAULT (no .hidden) -->
+    <!-- 01.png – Check any email -->
     <section>
-      <h2>🔍 Real-Time Breach Alerts</h2>
-      <p>Your email gets leaked? We’ll tell you — instantly. SecureAI scans billions of exposed credentials across the web to keep you in the loop, not in the dark.</p>
-      <img src="Assets/screenshots/breach-alert.png" alt="Real-Time Breach Alert" class="screenshot">
+      <h2>🔍 Check Any Email for Breaches</h2>
+      <p>Enter an email address and instantly see whether it shows up in known data-breach dumps — securely, with zero data stored on our servers.</p>
+      <img src="Assets/screenshots/01.png" alt="Check Email for Breaches" class="screenshot">
     </section>
 
-    <!-- Remaining cards fade-in -->
+    <!-- breach-alert.png -->
     <section class="hidden">
-      <h2>🧠 Built-In AI Advisor</h2>
-      <p>Ask questions. Get smart, actionable advice to protect your accounts and stay ahead of online threats.</p>
+      <h2>🚨 Instantly Discover If Your Data Is Exposed</h2>
+      <p>Our detailed breach-view breaks down what was leaked, when it happened, and which passwords to change first.</p>
+      <img src="Assets/screenshots/breach-alert.png" alt="Breach Details" class="screenshot">
+    </section>
+
+    <!-- 04.png – monitoring -->
+    <section class="hidden">
+      <h2>📬 Monitor Emails for Future Breaches</h2>
+      <p>Add any address to continuous monitoring. We’ll ping you the moment it appears in a new leak so you can act fast.</p>
+      <img src="Assets/screenshots/04.png" alt="Breach Monitoring" class="screenshot">
+    </section>
+
+    <!-- ai-advisor.png -->
+    <section class="hidden">
+      <h2>🧠 Meet Your AI Security Advisor</h2>
+      <p>Ask anything about cybersecurity, privacy, or best practices. Our AI gives clear answers tailored to your situation.</p>
       <img src="Assets/screenshots/ai-advisor.png" alt="AI Advisor" class="screenshot">
     </section>
 
+    <!-- security-score.png -->
     <section class="hidden">
-      <h2>🛡️ Privacy First</h2>
-      <p>We never store your data. All breach checks are encrypted and done securely — because trust is everything.</p>
-      <img src="Assets/screenshots/privacy-screen.png" alt="Privacy First" class="screenshot">
-    </section>
-
-    <section class="hidden">
-      <h2>📊 Track Your Security Score</h2>
-      <p>Visualize your risk with a security score that updates as your data exposure changes. Like a credit score, but for your digital safety.</p>
+      <h2>📊 Track Your Security Health in Real Time</h2>
+      <p>Your personal Security Score summarizes overall risk and improves as you secure more accounts.</p>
       <img src="Assets/screenshots/security-score.png" alt="Security Score" class="screenshot">
     </section>
 
-    <section class="hidden" style="border-top:1px solid #222; padding-top:2rem;">
+    <!-- testimonials -->
+    <section class="hidden" style="border-top:1px solid #222;padding-top:2rem;">
       <h2>✨ What Users Are Saying</h2>
-      <p>“Found out 9 of my accounts were breached. This app saved me from reusing passwords again!”</p>
-      <p>“I feel like I finally understand my online risk. The AI assistant is a game changer.”</p>
+      <p>“Found out nine of my accounts were breached. SecureAI saved me from reusing passwords again!”</p>
+      <p>“The AI assistant finally makes security advice easy to follow.”</p>
     </section>
 
+    <!-- download -->
     <section id="download" class="hidden contact">
       <h2>Ready to Stay Secure?</h2>
-      <p>Join thousands of users already monitoring their digital footprint.</p>
+      <p>Join thousands who already monitor their digital footprint with SecureAI.</p>
       <a href="#" class="cta-button">Get SecureAI</a>
     </section>
-
   </main>
 
-  <!-- Back-to-Top -->
   <a href="#top" class="to-top">↑</a>
 </body>
 </html>
