@@ -1,14 +1,17 @@
-/* ─── Base / Theme ─────────────────────────────────────────────────── */
 :root {
   --bg: #0c0c0c;
   --card: #141414;
   --text: #eaeaea;
-  --accent: #00ffd5;   /* neon cyan */
+  --accent: #00ffd5;
   --fade-time: 0.6s;
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
@@ -17,104 +20,15 @@ body {
   line-height: 1.7;
 }
 
-/* ─── Header ───────────────────────────────────────────────────────── */
-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.2rem 2rem;
-  background: var(--card);
-  border-bottom: 1px solid #222;
-}
-.logo { height: 48px; }
-
-/* ─── Navbar ───────────────────────────────────────────────────────── */
-.navbar {
-  position: sticky;
-  top: 0;
-  display: flex;
-  gap: 1.5rem;
-  padding: 0.8rem 2rem;
-  background: rgba(12,12,12,0.8);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid #222;
-  z-index: 100;
-}
-.navbar a {
-  color: var(--text);
-  text-decoration: none;
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.5px;
-  position: relative;
-}
-.navbar a::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -4px;
-  width: 0; height: 2px;
-  background: var(--accent);
-  transition: width 0.3s;
-}
-.navbar a:hover::after { width: 100%; }
-
-/* ─── Sections ─────────────────────────────────────────────────────── */
-.container { max-width: 880px; margin: 3rem auto; padding: 0 1.2rem; }
-
-section { margin-bottom: 4rem; }
-h2 {
-  font-family: "Rajdhani", sans-serif;
-  font-size: 1.9rem;
-  margin-bottom: 0.8rem;
-  color: var(--accent);
-}
-h3 { font-family: "Rajdhani", sans-serif; margin-top: 1.4rem; }
-
-/* Fade / slide animation */
-.hidden {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity var(--fade-time) ease-out,
-              transform var(--fade-time) ease-out;
-}
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── Contact Section ─────────────────────────────────────────────── */
-.contact { text-align: center; }
-.contact a { color: var(--accent); }
-
-/* ─── Back‑to‑Top Button ──────────────────────────────────────────── */
-.to‑top {
-  position: fixed;
-  right: 1.2rem; bottom: 1.2rem;
-  background: var(--card);
-  border: 1px solid #333;
-  border-radius: 50%;
-  width: 42px; height: 42px;
-  display: grid; place-items: center;
-  color: var(--accent);
-  font-size: 1.3rem;
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.3s;
-}
-.to‑top:hover { opacity: 1; }
-
-/* ─── Responsive tweaks ───────────────────────────────────────────── */
-@media (max-width: 600px) {
-  .navbar { overflow-x: auto; }
-  h2 { font-size: 1.6rem; }
-}
-
-/* ─── Hero ─────────────────────────────────────────────────────────── */
+/* Hero Section */
 .hero {
   padding: 3.5rem 1.5rem;
   text-align: center;
   background: var(--card);
   border-bottom: 1px solid #222;
+}
+.logo {
+  height: 48px;
 }
 .hero h1 {
   font-family: "Rajdhani", sans-serif;
@@ -147,3 +61,76 @@ h3 { font-family: "Rajdhani", sans-serif; margin-top: 1.4rem; }
   background: #00e0bb;
 }
 
+/* Main Container */
+.container {
+  max-width: 880px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+}
+section {
+  margin-bottom: 4rem;
+}
+h2 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.9rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+}
+
+/* Screenshots */
+.screenshot {
+  width: 100%;
+  max-width: 450px;
+  margin-top: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px #00ffd550;
+}
+
+/* Contact Section */
+.contact {
+  text-align: center;
+}
+.contact a {
+  color: var(--accent);
+}
+
+/* Fade in on scroll */
+.hidden {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--fade-time) ease-out,
+              transform var(--fade-time) ease-out;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Back-to-Top Button */
+.to‑top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-size: 1.3rem;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.to‑top:hover {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h2 {
+    font-size: 1.6rem;
+  }
+}
