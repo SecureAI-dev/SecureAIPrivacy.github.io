@@ -12,51 +12,68 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Fallback if JS is blocked -->
+  <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
+
+  <!-- Fade-in script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('show');
+            obs.unobserve(e.target);
+          }
+        });
+      },{threshold:0.15});
+      document.querySelectorAll('.hidden').forEach(el=>obs.observe(el));
+    });
+  </script>
 </head>
 <body>
-  <!-- ─── Hero Section ──────────────────────────────────────────────── -->
-  <header class="hero">
+  <!-- Hero -->
+  <header class="hero" id="top">
     <img src="Assets/secureai-logo.png" alt="SecureAI Logo" class="logo">
     <h1><span class="glow">SecureAI</span> protects your digital life</h1>
     <p class="tagline">Get instant alerts when your email appears in a data breach. Powered by AI. Privacy-first.</p>
     <a href="#download" class="cta-button">Download the App</a>
   </header>
 
-  <!-- ─── Feature Sections ──────────────────────────────────────────── -->
+  <!-- Main content -->
   <main class="container">
 
-    <section class="hidden">
+    <!-- FIRST CARD VISIBLE BY DEFAULT (no .hidden) -->
+    <section>
       <h2>🔍 Real-Time Breach Alerts</h2>
       <p>Your email gets leaked? We’ll tell you — instantly. SecureAI scans billions of exposed credentials across the web to keep you in the loop, not in the dark.</p>
-      <img src="Assets/screenshots/breach-alert.png" alt="Real-Time Breach Alert Screenshot" style="width:100%; max-width:450px; margin-top:1rem; border-radius:12px; box-shadow:0 0 12px #00ffd550;">
+      <img src="Assets/screenshots/breach-alert.png" alt="Real-Time Breach Alert" class="screenshot">
     </section>
 
+    <!-- Remaining cards fade-in -->
     <section class="hidden">
       <h2>🧠 Built-In AI Advisor</h2>
       <p>Ask questions. Get smart, actionable advice to protect your accounts and stay ahead of online threats.</p>
-      <img src="Assets/screenshots/ai-advisor.png" alt="AI Advisor Screenshot" style="width:100%; max-width:450px; margin-top:1rem; border-radius:12px; box-shadow:0 0 12px #00ffd550;">
+      <img src="Assets/screenshots/ai-advisor.png" alt="AI Advisor" class="screenshot">
     </section>
 
     <section class="hidden">
       <h2>🛡️ Privacy First</h2>
       <p>We never store your data. All breach checks are encrypted and done securely — because trust is everything.</p>
-      <img src="Assets/screenshots/privacy-screen.png" alt="Privacy-First Screenshot" style="width:100%; max-width:450px; margin-top:1rem; border-radius:12px; box-shadow:0 0 12px #00ffd550;">
+      <img src="Assets/screenshots/privacy-screen.png" alt="Privacy First" class="screenshot">
     </section>
 
     <section class="hidden">
       <h2>📊 Track Your Security Score</h2>
       <p>Visualize your risk with a security score that updates as your data exposure changes. Like a credit score, but for your digital safety.</p>
-      <img src="Assets/screenshots/security-score.png" alt="Security Score Screenshot" style="width:100%; max-width:450px; margin-top:1rem; border-radius:12px; box-shadow:0 0 12px #00ffd550;">
+      <img src="Assets/screenshots/security-score.png" alt="Security Score" class="screenshot">
     </section>
 
-    <!-- Testimonials -->
     <section class="hidden" style="border-top:1px solid #222; padding-top:2rem;">
       <h2>✨ What Users Are Saying</h2>
       <p>“Found out 9 of my accounts were breached. This app saved me from reusing passwords again!”</p>
       <p>“I feel like I finally understand my online risk. The AI assistant is a game changer.”</p>
     </section>
 
-    <!-- Final CTA -->
     <section id="download" class="hidden contact">
       <h2>Ready to Stay Secure?</h2>
       <p>Join thousands of users already monitoring their digital footprint.</p>
@@ -65,7 +82,7 @@
 
   </main>
 
-  <!-- Back‑to‑Top Button -->
-  <a href="#top" class="to‑top">↑</a>
+  <!-- Back-to-Top -->
+  <a href="#top" class="to-top">↑</a>
 </body>
 </html>
