@@ -1,10 +1,10 @@
 /* ─── Theme Variables ─────────────────────────────────────────────── */
 :root {
-  --bg: #0c0c0c;          /* page background */
-  --card: #141414;        /* hero/nav/page-header background */
-  --text: #eaeaea;        /* default text */
-  --accent: #6e51ce;      /* purple accent (matches screenshots) */
-  --fade-time: 0.6s;      /* duration for fade-in */
+  --bg: #0c0c0c;
+  --card: #141414;
+  --text: #eaeaea;
+  --accent: #6e51ce;
+  --fade-time: 0.6s;
 }
 
 /* ─── Global Reset ────────────────────────────────────────────────── */
@@ -18,7 +18,7 @@ body {
   line-height: 1.7;
 }
 
-/* ─── Re-usable Page-Header (logo + title) ────────────────────────── */
+/* ─── Re-usable Page Header (logo + title) ─────────────────────────── */
 .page-header {
   display: flex;
   flex-direction: column;
@@ -38,7 +38,7 @@ body {
 }
 .logo { height: 48px; }
 
-/* ─── Top Navigation ─────────────────────────────────────────────── */
+/* ─── Top Navigation ──────────────────────────────────────────────── */
 .navbar {
   display: flex;
   gap: 1.5rem;
@@ -67,11 +67,11 @@ body {
 }
 .navbar a:hover::after { width: 100%; }
 
-/* ─── Hero Section (landing page) ────────────────────────────────── */
+/* ─── Hero Section (landing page) ─────────────────────────────────── */
 .hero {
   padding: 3.5rem 1.5rem;
   text-align: center;
-  background: var(--card);           /* overridden inline for gradient */
+  background: var(--card);     /* gradient set inline */
   border-bottom: 1px solid #222;
 }
 .hero h1 {
@@ -84,7 +84,7 @@ body {
   text-shadow: 0 0 6px var(--accent);
 }
 
-/* Neon flicker animation (respects reduced-motion) */
+/* Neon flicker (disabled for prefers-reduced-motion) */
 @media (prefers-reduced-motion: no-preference) {
   @keyframes flicker {
     0%, 18%, 22%, 25%, 53%, 57%, 100% {
@@ -99,9 +99,7 @@ body {
       text-shadow: none;
     }
   }
-  .glow-flicker {
-    animation: flicker 3s infinite steps(100);
-  }
+  .glow-flicker { animation: flicker 3s infinite steps(100); }
 }
 
 .tagline {
@@ -110,11 +108,11 @@ body {
   margin: 0 auto 1.5rem;
 }
 
-/* ─── Buttons ────────────────────────────────────────────────────── */
+/* ─── Buttons ─────────────────────────────────────────────────────── */
 .cta-button {
   display: inline-block;
   background: var(--accent);
-  color: #000;                       /* always legible */
+  color: #000;                 /* legible everywhere */
   text-decoration: none;
   padding: 0.75rem 1.6rem;
   border-radius: 8px;
@@ -126,7 +124,7 @@ body {
 }
 .cta-button:hover { background: #5f6fff; }
 
-/* Links inside .contact — but keep buttons black */
+/* Links in .contact but NOT buttons */
 .contact a:not(.cta-button) { color: var(--accent); }
 
 /* ─── Main Container ─────────────────────────────────────────────── */
@@ -155,7 +153,7 @@ h2 {
   box-shadow: 0 0 12px #7385ff50;
 }
 
-/* ─── Fade-In Animation ──────────────────────────────────────────── */
+/* ─── Reveal-on-scroll ───────────────────────────────────────────── */
 .hidden {
   opacity: 0;
   transform: translateY(24px);
