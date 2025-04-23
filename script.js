@@ -1,4 +1,3 @@
-/* Reveal on scroll */
 document.addEventListener("DOMContentLoaded", () => {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
