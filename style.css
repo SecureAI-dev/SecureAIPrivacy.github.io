@@ -21,7 +21,7 @@ body{
   position:relative;overflow-x:hidden;
 }
 
-/* ─── Tron Grid Layer ─────────────────────────────────────────────── */
+/* ─── Tron Grid ───────────────────────────────────────────────────── */
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:-3;
   background-image:
@@ -29,24 +29,23 @@ body::before{
     repeating-linear-gradient(90deg,transparent 0 29px ,rgba(110,81,206,.10) 30px 30px);
 }
 
-/* ─── Animated Twin Laser Shots ───────────────────────────────────── */
-/* Fires upward every 8 s, lasts ≈0.8 s */
+/* ─── Twin Laser Shots (now slower & longer) ─────────────────────── */
 body::after{
   content:"";position:fixed;top:-100vh;bottom:-100vh;left:0;right:0;
   pointer-events:none;z-index:-2;
   background:
-    /* left beam */  linear-gradient(90deg,transparent 0%,rgba(110,81,206,.90) 55%,transparent 100%) 0 0/4px 100% no-repeat,
-    /* right beam */ linear-gradient(90deg,transparent 0%,rgba(110,81,206,.90) 45%,transparent 100%) 100% 0/4px 100% no-repeat;
-  will-change:transform,opacity;
+    linear-gradient(90deg,transparent 0%,rgba(110,81,206,.90) 55%,transparent 100%) 0   0/4px 100% no-repeat,
+    linear-gradient(90deg,transparent 0%,rgba(110,81,206,.90) 45%,transparent 100%) 100% 0/4px 100% no-repeat;
   filter:drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 12px var(--accent));
-  opacity:0;
-  animation:laserShot 8s linear infinite;
+  opacity:0;will-change:transform,opacity;
+  animation:laserShot 10s linear infinite;
 }
+/* 0-85% idle → 85-95% climb → fade */
 @keyframes laserShot{
-  0%,79%   {opacity:0;transform:translateY(100%);}   /* waiting phase   */
-  80%      {opacity:1;transform:translateY(100%);}   /* beams appear    */
-  87%      {opacity:1;transform:translateY(-100%);}  /* fly past top    */
-  88%,100% {opacity:0;transform:translateY(-100%);}  /* hide & reset    */
+  0%,84.5% {opacity:0;transform:translateY(100%);}
+  85%      {opacity:1;transform:translateY(100%);}
+  95%      {opacity:1;transform:translateY(-100%);}
+  97%,100% {opacity:0;transform:translateY(-100%);}
 }
 
 /* ─── Page Header (Privacy / TOS) ─────────────────────────────────── */
@@ -87,13 +86,21 @@ body::after{
   box-shadow:0 0 12px var(--accent),0 0 32px rgba(110,81,206,.6);
   overflow:hidden;
 }
+/* smoother scan: fades out near bottom */
 @media(prefers-reduced-motion:no-preference){
   .hero::before{
     content:"";position:absolute;left:0;top:-150%;width:100%;height:150%;
-    background:linear-gradient(0deg,transparent 0%,transparent 80%,rgba(110,81,206,.25) 100%);
+    background:linear-gradient(0deg,
+        transparent 0%,transparent 75%,rgba(110,81,206,.25) 100%);
     animation:scan 6s linear infinite;
+    opacity:0;
   }
-  @keyframes scan{to{transform:translateY(150%);}}
+  @keyframes scan{
+    0%   {transform:translateY(-150%);opacity:0;}
+    10%  {opacity:1;}
+    90%  {opacity:1;}
+    100% {transform:translateY(150%);opacity:0;} /* fades smoothly */
+  }
 }
 .hero h1{
   font-family:"Rajdhani",sans-serif;font-size:2.6rem;
