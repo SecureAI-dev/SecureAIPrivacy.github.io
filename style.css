@@ -108,3 +108,42 @@ h3 { font-family: "Rajdhani", sans-serif; margin-top: 1.4rem; }
   .navbar { overflow-x: auto; }
   h2 { font-size: 1.6rem; }
 }
+
+/* ─── Hero ─────────────────────────────────────────────────────────── */
+.hero {
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  background: var(--card);
+  border-bottom: 1px solid #222;
+}
+.hero h1 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 2.5rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+}
+.glow {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--accent);
+}
+.tagline {
+  font-size: 1.1rem;
+  max-width: 540px;
+  margin: 0 auto 1.5rem;
+}
+.cta-button {
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  padding: 0.75rem 1.6rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px #00ffd550;
+  transition: background 0.3s;
+}
+.cta-button:hover {
+  background: #00e0bb;
+}
+
