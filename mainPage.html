@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="style.css" />
   <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
 
-  <!-- Fade-in script -->
+  <!-- Fade-in script (unchanged) -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const obs = new IntersectionObserver(entries=>{
@@ -30,14 +30,22 @@
   </script>
 </head>
 <body>
-  <!-- Hero (purple gradient to match screenshots) -->
+
+  <!-- ─── Global Nav ─────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <a href="index.html">Privacy&nbsp;Policy</a>
+    <a href="terms.html">Terms&nbsp;of&nbsp;Service</a>
+  </nav>
+
+  <!-- ─── Hero Section ───────────────────────────────────────────── -->
   <header class="hero" id="top" style="background:linear-gradient(180deg,#5866ff 0%,#4f56ff 100%);">
     <img src="Assets/secureai-logo.png" alt="SecureAI Logo" class="logo">
     <h1><span class="glow">SecureAI</span> protects your digital life</h1>
     <p class="tagline">Get instant alerts when your email appears in a data breach. Privacy-first. Powered by AI.</p>
-    <a href="#download" class="cta-button">Download the App</a>
+    <a href="#download" class="cta-button">Download&nbsp;Now</a>
   </header>
 
+  <!-- ─── Main Content ───────────────────────────────────────────── -->
   <main class="container">
 
     <!-- 01.png – Check any email -->
@@ -50,14 +58,14 @@
     <!-- breach-alert.png -->
     <section class="hidden">
       <h2>🚨 Instantly Discover If Your Data Is Exposed</h2>
-      <p>Our detailed breach-view breaks down what was leaked, when it happened, and which passwords to change first.</p>
+      <p>Our detailed breach view breaks down what was leaked, when it happened, and which passwords to change first.</p>
       <img src="Assets/screenshots/breach-alert.png" alt="Breach Details" class="screenshot">
     </section>
 
     <!-- 04.png – monitoring -->
     <section class="hidden">
       <h2>📬 Monitor Emails for Future Breaches</h2>
-      <p>Add any address to continuous monitoring. We’ll ping you the moment it appears in a new leak so you can act fast.</p>
+      <p>Add any address to continuous monitoring. We’ll alert you the moment it appears in a new leak so you can act fast.</p>
       <img src="Assets/screenshots/04.png" alt="Breach Monitoring" class="screenshot">
     </section>
 
@@ -85,11 +93,12 @@
     <!-- download -->
     <section id="download" class="hidden contact">
       <h2>Ready to Stay Secure?</h2>
-      <p>Join thousands who already monitor their digital footprint with SecureAI.</p>
-      <a href="#" class="cta-button">Get SecureAI</a>
+      <p>Join thousands of users already monitoring their digital footprint.</p>
+      <a href="#" class="cta-button">Download&nbsp;Now</a>
     </section>
   </main>
 
+  <!-- Back to Top -->
   <a href="#top" class="to-top">↑</a>
 </body>
 </html>
