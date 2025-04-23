@@ -1,14 +1,13 @@
-/* Reveal‑on‑scroll */
-const observer = new IntersectionObserver(
-  entries => {
+/* Reveal on scroll */
+document.addEventListener("DOMContentLoaded", () => {
+  const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
-        e.target.classList.add('show');
-        observer.unobserve(e.target);
+        e.target.classList.add("show");
+        obs.unobserve(e.target);
       }
     });
-  },
-  { threshold: 0.15 }
-);
+  }, { threshold: 0.15 });
 
-document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+  document.querySelectorAll(".hidden").forEach(el => obs.observe(el));
+});
