@@ -14,91 +14,92 @@
   <link rel="stylesheet" href="style.css" />
   <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
 
-  <!-- Fade-in script (unchanged) -->
+  <!-- Fade-in script -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const obs = new IntersectionObserver(entries=>{
+    document.addEventListener("DOMContentLoaded",()=>{
+      const obs=new IntersectionObserver(entries=>{
         entries.forEach(e=>{
           if(e.isIntersecting){
             e.target.classList.add('show');
             obs.unobserve(e.target);
           }
         });
-      },{threshold:0.15});
+      },{threshold:.15});
       document.querySelectorAll('.hidden').forEach(el=>obs.observe(el));
     });
   </script>
 </head>
 <body>
 
-  <!-- ─── Global Nav ─────────────────────────────────────────────── -->
+  <!-- Global nav -->
   <nav class="navbar">
     <a href="index.html">Privacy&nbsp;Policy</a>
     <a href="terms.html">Terms&nbsp;of&nbsp;Service</a>
   </nav>
 
-  <!-- ─── Hero Section ───────────────────────────────────────────── -->
-  <header class="hero" id="top" style="background:linear-gradient(180deg,#5866ff 0%,#4f56ff 100%);">
+  <!-- Hero -->
+  <header class="hero" id="top">
     <img src="Assets/secureai-logo.png" alt="SecureAI Logo" class="logo">
     <h1><span class="glow">SecureAI</span> protects your digital life</h1>
     <p class="tagline">Get instant alerts when your email appears in a data breach. Privacy-first. Powered by AI.</p>
     <a href="#download" class="cta-button">Download&nbsp;Now</a>
   </header>
 
-  <!-- ─── Main Content ───────────────────────────────────────────── -->
+  <!-- Main content -->
   <main class="container">
 
-    <!-- 01.png – Check any email -->
+    <!-- Card 1 -->
     <section>
       <h2>🔍 Check Any Email for Breaches</h2>
-      <p>Enter an email address and instantly see whether it shows up in known data-breach dumps — securely, with zero data stored on our servers.</p>
-      <img src="Assets/screenshots/01.png" alt="Check Email for Breaches" class="screenshot">
+      <p>Instantly see whether an address appears in known data-breach dumps — securely and privately.</p>
+      <img src="Assets/screenshots/01.png" alt="Check for Breaches" class="screenshot">
     </section>
 
-    <!-- breach-alert.png -->
+    <!-- Card 2 -->
     <section class="hidden">
       <h2>🚨 Instantly Discover If Your Data Is Exposed</h2>
-      <p>Our detailed breach view breaks down what was leaked, when it happened, and which passwords to change first.</p>
+      <p>View detailed breach info so you know which passwords to change first.</p>
       <img src="Assets/screenshots/breach-alert.png" alt="Breach Details" class="screenshot">
     </section>
 
-    <!-- 04.png – monitoring -->
+    <!-- Card 3 -->
     <section class="hidden">
       <h2>📬 Monitor Emails for Future Breaches</h2>
-      <p>Add any address to continuous monitoring. We’ll alert you the moment it appears in a new leak so you can act fast.</p>
+      <p>Add any address to continuous monitoring and get real-time alerts.</p>
       <img src="Assets/screenshots/04.png" alt="Breach Monitoring" class="screenshot">
     </section>
 
-    <!-- ai-advisor.png -->
+    <!-- Card 4 -->
     <section class="hidden">
       <h2>🧠 Meet Your AI Security Advisor</h2>
-      <p>Ask anything about cybersecurity, privacy, or best practices. Our AI gives clear answers tailored to your situation.</p>
+      <p>Ask anything about cybersecurity or privacy — our AI has your back.</p>
       <img src="Assets/screenshots/ai-advisor.png" alt="AI Advisor" class="screenshot">
     </section>
 
-    <!-- security-score.png -->
+    <!-- Card 5 -->
     <section class="hidden">
       <h2>📊 Track Your Security Health in Real Time</h2>
-      <p>Your personal Security Score summarizes overall risk and improves as you secure more accounts.</p>
+      <p>Your personal Security Score improves as you secure more accounts.</p>
       <img src="Assets/screenshots/security-score.png" alt="Security Score" class="screenshot">
     </section>
 
-    <!-- testimonials -->
+    <!-- Testimonials -->
     <section class="hidden" style="border-top:1px solid #222;padding-top:2rem;">
       <h2>✨ What Users Are Saying</h2>
       <p>“Found out nine of my accounts were breached. SecureAI saved me from reusing passwords again!”</p>
       <p>“The AI assistant finally makes security advice easy to follow.”</p>
     </section>
 
-    <!-- download -->
+    <!-- Final CTA -->
     <section id="download" class="hidden contact">
       <h2>Ready to Stay Secure?</h2>
       <p>Join thousands of users already monitoring their digital footprint.</p>
       <a href="#" class="cta-button">Download&nbsp;Now</a>
     </section>
+
   </main>
 
-  <!-- Back to Top -->
+  <!-- FAB -->
   <a href="#top" class="to-top">↑</a>
 </body>
 </html>
