@@ -7,7 +7,7 @@
   --fade:.6s;
 }
 
-/* ─── Global Reset & Smoothing ────────────────────────────────────── */
+/* ── Global Reset & Smoothing ─────────────────────────────────────── */
 *{box-sizing:border-box;}
 html{
   scroll-behavior:smooth;
@@ -29,7 +29,7 @@ body::before{
     repeating-linear-gradient(90deg,transparent 0 29px ,rgba(110,81,206,.10) 30px 30px);
 }
 
-/* ─── Twin Laser Shots (now slower & longer) ─────────────────────── */
+/* ─── Twin Laser Shots (smoother & slower) ───────────────────────── */
 body::after{
   content:"";position:fixed;top:-100vh;bottom:-100vh;left:0;right:0;
   pointer-events:none;z-index:-2;
@@ -38,14 +38,14 @@ body::after{
     linear-gradient(90deg,transparent 0%,rgba(110,81,206,.90) 45%,transparent 100%) 100% 0/4px 100% no-repeat;
   filter:drop-shadow(0 0 6px var(--accent)) drop-shadow(0 0 12px var(--accent));
   opacity:0;will-change:transform,opacity;
-  animation:laserShot 10s linear infinite;
+  transform:translateZ(0);                          /* GPU hint        */
+  animation:laserShot 14s cubic-bezier(.4,0,.2,1) infinite;
 }
-/* 0-85% idle → 85-95% climb → fade */
 @keyframes laserShot{
-  0%,84.5% {opacity:0;transform:translateY(100%);}
-  85%      {opacity:1;transform:translateY(100%);}
-  95%      {opacity:1;transform:translateY(-100%);}
-  97%,100% {opacity:0;transform:translateY(-100%);}
+  0%,88%  {opacity:0;transform:translate3d(0,100%,0);}
+  89%     {opacity:1;transform:translate3d(0,100%,0);}
+  97%     {opacity:1;transform:translate3d(0,-110%,0);}
+  99%,100%{opacity:0;transform:translate3d(0,-110%,0);}
 }
 
 /* ─── Page Header (Privacy / TOS) ─────────────────────────────────── */
@@ -86,22 +86,24 @@ body::after{
   box-shadow:0 0 12px var(--accent),0 0 32px rgba(110,81,206,.6);
   overflow:hidden;
 }
-/* smoother scan: fades out near bottom */
+
+/* Slower scan line (10 s) with smooth fade-out */
 @media(prefers-reduced-motion:no-preference){
   .hero::before{
     content:"";position:absolute;left:0;top:-150%;width:100%;height:150%;
     background:linear-gradient(0deg,
         transparent 0%,transparent 75%,rgba(110,81,206,.25) 100%);
-    animation:scan 6s linear infinite;
+    animation:scan 10s linear infinite;
     opacity:0;
   }
   @keyframes scan{
     0%   {transform:translateY(-150%);opacity:0;}
-    10%  {opacity:1;}
-    90%  {opacity:1;}
-    100% {transform:translateY(150%);opacity:0;} /* fades smoothly */
+    8%   {opacity:1;}
+    92%  {opacity:1;}
+    100% {transform:translateY(150%);opacity:0;}
   }
 }
+
 .hero h1{
   font-family:"Rajdhani",sans-serif;font-size:2.6rem;
   margin:0 0 .8rem;color:var(--accent);text-shadow:0 0 6px var(--accent);
