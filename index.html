@@ -10,9 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200..900&family=Rajdhani:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Styles & Script -->
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+
+  <!-- Fallback if JS is blocked -->
+  <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
   <!-- ─── Header / Logo ──────────────────────────────────────────────── -->
@@ -23,7 +25,6 @@
 
   <!-- ─── Navigation Bar ─────────────────────────────────────────────── -->
   <nav class="navbar">
-    <a href="mainPage.html">Main&nbsp;Page</a>
     <a href="#intro">Intro</a>
     <a href="#info">Information&nbsp;We&nbsp;Collect</a>
     <a href="#usage">How&nbsp;We&nbsp;Use&nbsp;Info</a>
@@ -38,7 +39,7 @@
       <h2>Introduction</h2>
       <p><strong>Privacy Policy for SecureAI<br>Effective Date: March&nbsp;26,&nbsp;2025</strong></p>
 
-      <p>SecureAI (“we”, “our”, or “us”) is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you use the SecureAI mobile application (“the App”). By accessing or using the App, you agree to the collection and use of information as outlined in this Privacy Policy. If you do not agree with this Privacy Policy, please refrain from using the App.</p>
+      <p>SecureAI (“we”, “our”, or “us”) is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you use the SecureAI mobile application (“the App”). By accessing or using the App, you agree to the collection and use of information as outlined in this Privacy Policy. If you do not agree with this Privacy Policy, please refrain from using the App.</p>
     </section>
 
     <!-- Information We Collect -->
@@ -55,7 +56,7 @@
       <p>We may collect information about the device you use to access the App, including its model, operating system version, device identifiers (such as IP address or device ID), crash logs, and other diagnostic data to help us troubleshoot and improve our services.</p>
 
       <h3>Use&nbsp;of&nbsp;External&nbsp;Data</h3>
-      <p>The App utilizes data provided by the <em>Have I Been Pwned</em> service, which is licensed under the Creative Commons Attribution 4.0 International License. Please note that we have made modifications to this data for use within the App. For more information about Have I Been Pwned, please visit their website.</p>
+      <p>The App utilizes data provided by the <em>Have I Been Pwned</em> service, which is licensed under the Creative Commons Attribution 4.0 International License. Please note that we have made modifications to this data for use within the App. For more information about Have I Been Pwned, please visit their website.</p>
     </section>
 
     <!-- How We Use & Other Sections -->
@@ -106,16 +107,33 @@
     <section id="contact" class="hidden contact">
       <h2>Contact&nbsp;Us</h2>
       <p>If you have any questions or concerns about this Privacy Policy or the processing of your personal data, please contact us at:<br>
-         📧 Email: <a href="mailto:SecureAIFeedback@gmail.com">SecureAIFeedback@gmail.com</a></p>
+         📧 Email: <a href="mailto:SecureAIFeedback@gmail.com">SecureAIFeedback@gmail.com</a></p>
       <p>We will respond to your inquiry as soon as possible.</p>
-      <!-- new footer link -->
       <p style="margin-top:1.2rem;font-size:0.95rem;">
         Looking for our <a href="terms.html">Terms&nbsp;of&nbsp;Service</a>? You can find them here.
       </p>
     </section>
   </main>
 
-  <!-- Back‑to‑Top Button -->
-  <a href="#top" class="to‑top">↑</a>
+  <!-- Back-to-Top Button -->
+  <a href="#top" class="to-top">↑</a>
+
+  <!-- ─── Inline JS to reveal sections ──────────────────────────────── -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('show');
+              observer.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
