@@ -1,7 +1,7 @@
 /* ─── Theme Variables ─────────────────────────────────────────────── */
 :root {
-  --card:   #141414;               /* master surface colour           */
-  --bg:     var(--card);           /* page background now same grey   */
+  --card:   #141414;               /* unified background colour       */
+  --bg:     var(--card);
   --text:   #eaeaea;
   --accent: #6e51ce;
   --fade:   0.6s;
@@ -12,22 +12,20 @@
 
 html {
   scroll-behavior: smooth;
-
-  /* system-wide, maximised smoothing */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;   /* <— NEW */
+  text-rendering: optimizeLegibility;
 }
 
 body {
   margin: 0;
   font-family: "Work Sans", sans-serif;
-  background: var(--bg);                 /* uniform grey everywhere   */
+  background: var(--bg);
   color: var(--text);
   line-height: 1.7;
 }
 
-/* ─── Re-usable Page Header (logo + title) ────────────────────────── */
+/* ─── Page Header (Privacy / TOS) ─────────────────────────────────── */
 .page-header{
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:.8rem;padding:2.6rem 1rem 2rem;text-align:center;
@@ -38,7 +36,7 @@ body {
 }
 .page-header .logo{height:48px;display:block;margin:0 auto;}
 
-/* ─── Top Navigation ──────────────────────────────────────────────── */
+/* ─── Navigation Bar ──────────────────────────────────────────────── */
 .navbar{
   display:flex;gap:1.5rem;justify-content:center;
   background:var(--card);border-bottom:1px solid #222;
@@ -54,26 +52,31 @@ body {
 }
 .navbar a:hover::after{width:100%;}
 
-/* ─── Hero Section (now flat grey) ────────────────────────────────── */
+/* ─── Hero Section ───────────────────────────────────────────────── */
 .hero{
   padding:4rem 1.5rem 3.5rem;text-align:center;
-  background:var(--card);                 /* flat surface */ 
-  border-bottom:1px solid #222;
+  background:var(--card);border-bottom:1px solid #222;
 }
+.hero .logo{height:56px;}   /* ↓ logo now modest */
 .hero h1{
-  font-family:"Rajdhani",sans-serif;font-size:2.6rem;margin:1.2rem 0 .6rem;
+  font-family:"Rajdhani",sans-serif;font-size:2.6rem;
+  margin:1.2rem 0 .6rem;
+  color:var(--accent);
+  text-shadow:0 0 6px var(--accent);      /* base glow            */
 }
-.glow{color:var(--accent);text-shadow:0 0 6px var(--accent);}
 
-/* Neon flicker (prefers-reduced-motion respected) */
+/* apply flicker only for people who haven't disabled motion */
 @media (prefers-reduced-motion:no-preference){
   @keyframes flicker{
     0%,18%,22%,25%,53%,57%,100%{
-      opacity:1;text-shadow:0 0 6px var(--accent),0 0 12px var(--accent),0 0 20px var(--accent);
+      opacity:1;
+      text-shadow:0 0 6px var(--accent),
+                  0 0 12px var(--accent),
+                  0 0 20px var(--accent);
     }
     20%,24%,55%{opacity:.45;text-shadow:none;}
   }
-  .glow-flicker{animation:flicker 3s infinite steps(100);}
+  .hero h1{animation:flicker 3s infinite steps(100);}
 }
 
 .tagline{
