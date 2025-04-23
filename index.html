@@ -10,20 +10,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@200..900&family=Rajdhani:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- Styles & script -->
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Fallback if JS is blocked -->
   <noscript><style>.hidden{opacity:1!important;transform:none!important}</style></noscript>
+  <script defer src="script.js"></script>
 </head>
 <body>
-  <!-- ─── Header / Logo ──────────────────────────────────────────────── -->
-  <header id="top">
+  <!-- ─── Header ─────────────────────────────────────────────────── -->
+  <header id="top" class="page-header">
     <img src="Assets/secureai-logo.png" alt="SecureAI Logo" class="logo">
     <h1>SecureAI&nbsp;Privacy&nbsp;Policy</h1>
   </header>
 
-  <!-- ─── Navigation Bar ─────────────────────────────────────────────── -->
+  <!-- ─── Navigation ─────────────────────────────────────────────── -->
   <nav class="navbar">
     <a href="mainPage.html">Home</a>
     <a href="terms.html">Terms&nbsp;of&nbsp;Service</a>
@@ -33,13 +32,12 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- ─── Main Content ───────────────────────────────────────────────── -->
+  <!-- ─── Main Content ───────────────────────────────────────────── -->
   <main class="container">
     <!-- Introduction -->
     <section id="intro" class="hidden">
       <h2>Introduction</h2>
       <p><strong>Privacy Policy for SecureAI<br>Effective Date: March&nbsp;26,&nbsp;2025</strong></p>
-
       <p>SecureAI (“we”, “our”, or “us”) is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your personal information when you use the SecureAI mobile application (“the App”). By accessing or using the App, you agree to the collection and use of information as outlined in this Privacy Policy. If you do not agree with this Privacy Policy, please refrain from using the App.</p>
     </section>
 
@@ -118,23 +116,5 @@
 
   <!-- Back-to-Top Button -->
   <a href="#top" class="to-top">↑</a>
-
-  <!-- ─── Inline JS to reveal sections ──────────────────────────────── -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver(
-        entries => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.classList.add('show');
-              observer.unobserve(e.target);
-            }
-          });
-        },
-        { threshold: 0.15 }
-      );
-      document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
-    });
-  </script>
 </body>
 </html>
