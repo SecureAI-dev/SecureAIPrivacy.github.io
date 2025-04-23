@@ -1,7 +1,7 @@
 /* ─── Theme Variables ─────────────────────────────────────────────── */
 :root {
   --bg: #0c0c0c;          /* page background */
-  --card: #141414;        /* hero/nav background */
+  --card: #141414;        /* hero/nav/page-header background */
   --text: #eaeaea;        /* default text */
   --accent: #6e51ce;      /* purple accent (matches screenshots) */
   --fade-time: 0.6s;      /* duration for fade-in */
@@ -17,6 +17,26 @@ body {
   color: var(--text);
   line-height: 1.7;
 }
+
+/* ─── Re-usable Page-Header (logo + title) ────────────────────────── */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  padding: 2.6rem 1rem 2rem;
+  text-align: center;
+  background: var(--card);
+  border-bottom: 1px solid #222;
+}
+.page-header h1 {
+  margin: 0;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 2.2rem;
+  line-height: 1.2;
+}
+.logo { height: 48px; }
 
 /* ─── Top Navigation ─────────────────────────────────────────────── */
 .navbar {
@@ -47,29 +67,54 @@ body {
 }
 .navbar a:hover::after { width: 100%; }
 
-/* ─── Hero Section ───────────────────────────────────────────────── */
+/* ─── Hero Section (landing page) ────────────────────────────────── */
 .hero {
   padding: 3.5rem 1.5rem;
   text-align: center;
   background: var(--card);           /* overridden inline for gradient */
   border-bottom: 1px solid #222;
 }
-.logo { height: 48px; }
 .hero h1 {
   font-family: "Rajdhani", sans-serif;
   font-size: 2.5rem;
   margin: 1.2rem 0 0.6rem;
 }
-.glow { color: var(--accent); text-shadow: 0 0 6px var(--accent); }
+.glow {
+  color: var(--accent);
+  text-shadow: 0 0 6px var(--accent);
+}
+
+/* Neon flicker animation (respects reduced-motion) */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      opacity: 1;
+      text-shadow:
+        0 0 6px   var(--accent),
+        0 0 12px  var(--accent),
+        0 0 20px  var(--accent);
+    }
+    20%, 24%, 55% {
+      opacity: .45;
+      text-shadow: none;
+    }
+  }
+  .glow-flicker {
+    animation: flicker 3s infinite steps(100);
+  }
+}
+
 .tagline {
   font-size: 1.1rem;
   max-width: 540px;
   margin: 0 auto 1.5rem;
 }
+
+/* ─── Buttons ────────────────────────────────────────────────────── */
 .cta-button {
   display: inline-block;
   background: var(--accent);
-  color: #000;
+  color: #000;                       /* always legible */
   text-decoration: none;
   padding: 0.75rem 1.6rem;
   border-radius: 8px;
@@ -81,6 +126,9 @@ body {
 }
 .cta-button:hover { background: #5f6fff; }
 
+/* Links inside .contact — but keep buttons black */
+.contact a:not(.cta-button) { color: var(--accent); }
+
 /* ─── Main Container ─────────────────────────────────────────────── */
 .container {
   max-width: 880px;
@@ -89,7 +137,7 @@ body {
 }
 section {
   margin-bottom: 4rem;
-  text-align: center;      /* center everything */
+  text-align: center;
 }
 h2 {
   font-family: "Rajdhani", sans-serif;
@@ -101,15 +149,11 @@ h2 {
 /* ─── Screenshots ────────────────────────────────────────────────── */
 .screenshot {
   width: 90%;
-  max-width: 320px;        /* scaled down for nicer layout */
+  max-width: 320px;
   margin: 1rem auto;
   border-radius: 12px;
   box-shadow: 0 0 12px #7385ff50;
 }
-
-/* ─── Contact / CTA Section ──────────────────────────────────────── */
-.contact { text-align: center; }
-.contact a { color: var(--accent); }
 
 /* ─── Fade-In Animation ──────────────────────────────────────────── */
 .hidden {
@@ -118,10 +162,7 @@ h2 {
   transition: opacity var(--fade-time) ease-out,
               transform var(--fade-time) ease-out;
 }
-.show {
-  opacity: 1;
-  transform: translateY(0);
-}
+.show { opacity: 1; transform: translateY(0); }
 
 /* ─── Back-to-Top Button ─────────────────────────────────────────── */
 .to-top {
