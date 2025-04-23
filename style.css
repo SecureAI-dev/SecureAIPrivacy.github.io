@@ -1,11 +1,13 @@
+/* ─── Theme Variables ─────────────────────────────────────────────── */
 :root {
-  --bg: #0c0c0c;
-  --card: #141414;
-  --text: #eaeaea;
-  --accent:#7385ff;
-  --fade-time: 0.6s;
+  --bg: #0c0c0c;          /* page background */
+  --card: #141414;        /* hero/nav background */
+  --text: #eaeaea;        /* default text */
+  --accent: #7385ff;      /* purple accent (matches screenshots) */
+  --fade-time: 0.6s;      /* duration for fade-in */
 }
 
+/* ─── Global Reset ────────────────────────────────────────────────── */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -16,18 +18,47 @@ body {
   line-height: 1.7;
 }
 
-/* Hero */
+/* ─── Top Navigation ─────────────────────────────────────────────── */
+.navbar {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  background: var(--card);
+  border-bottom: 1px solid #222;
+  padding: 0.8rem 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+.navbar a {
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.05rem;
+  position: relative;
+}
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
+.navbar a:hover::after { width: 100%; }
+
+/* ─── Hero Section ───────────────────────────────────────────────── */
 .hero {
   padding: 3.5rem 1.5rem;
   text-align: center;
-  background: var(--card);
+  background: var(--card);           /* overridden inline for gradient */
   border-bottom: 1px solid #222;
 }
 .logo { height: 48px; }
 .hero h1 {
   font-family: "Rajdhani", sans-serif;
   font-size: 2.5rem;
-  margin: 1.2rem 0 .6rem;
+  margin: 1.2rem 0 0.6rem;
 }
 .glow { color: var(--accent); text-shadow: 0 0 6px var(--accent); }
 .tagline {
@@ -36,61 +67,82 @@ body {
   margin: 0 auto 1.5rem;
 }
 .cta-button {
+  display: inline-block;
   background: var(--accent);
   color: #000;
   text-decoration: none;
-  padding: .75rem 1.6rem;
+  padding: 0.75rem 1.6rem;
   border-radius: 8px;
   font-weight: bold;
   font-family: "Rajdhani", sans-serif;
   font-size: 1.1rem;
-  box-shadow: 0 0 12px #00ffd550;
-  transition: background .3s;
+  box-shadow: 0 0 12px #7385ff80;
+  transition: background 0.3s;
 }
-.cta-button:hover { background:#00e0bb; }
+.cta-button:hover { background: #5f6fff; }
 
-/* Main */
-.container { max-width: 880px; margin: 3rem auto; padding: 0 1.2rem; }
-section { margin-bottom: 4rem; }
+/* ─── Main Container ─────────────────────────────────────────────── */
+.container {
+  max-width: 880px;
+  margin: 3rem auto;
+  padding: 0 1.2rem;
+}
+section {
+  margin-bottom: 4rem;
+  text-align: center;      /* center everything */
+}
 h2 {
   font-family: "Rajdhani", sans-serif;
   font-size: 1.9rem;
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   color: var(--accent);
 }
 
-/* Images */
+/* ─── Screenshots ────────────────────────────────────────────────── */
 .screenshot {
-  width: 100%;
-  max-width: 450px;
-  margin-top: 1rem;
+  width: 90%;
+  max-width: 320px;        /* scaled down for nicer layout */
+  margin: 1rem auto;
   border-radius: 12px;
-  box-shadow: 0 0 12px #00ffd550;
+  box-shadow: 0 0 12px #7385ff50;
 }
 
-/* Contact */
+/* ─── Contact / CTA Section ──────────────────────────────────────── */
 .contact { text-align: center; }
 .contact a { color: var(--accent); }
 
-/* Fade-in */
+/* ─── Fade-In Animation ──────────────────────────────────────────── */
 .hidden {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity var(--fade-time) ease-out,
               transform var(--fade-time) ease-out;
 }
-.show { opacity:1; transform:none; }
-
-/* Back-to-Top */
-.to-top{
-  position:fixed; right:1.2rem; bottom:1.2rem;
-  background:var(--card); border:1px solid #333;
-  border-radius:50%; width:42px; height:42px;
-  display:grid; place-items:center;
-  color:var(--accent); font-size:1.3rem; text-decoration:none;
-  opacity:.7; transition:opacity .3s;
+.show {
+  opacity: 1;
+  transform: translateY(0);
 }
-.to-top:hover{opacity:1}
 
-/* Responsive */
-@media(max-width:600px){ h2{font-size:1.6rem;} }
+/* ─── Back-to-Top Button ─────────────────────────────────────────── */
+.to-top {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  background: var(--card);
+  border: 1px solid #333;
+  border-radius: 50%;
+  width: 42px; height: 42px;
+  display: grid; place-items: center;
+  color: var(--accent);
+  font-size: 1.3rem;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+.to-top:hover { opacity: 1; }
+
+/* ─── Responsive Tweaks ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  h2 { font-size: 1.6rem; }
+  .hero h1 { font-size: 2rem; }
+}
